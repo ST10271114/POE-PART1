@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Claim";
+}
+@model ASSIGNMENT.Models.Supportservice
+<div class="text-center">
+   
+    <h1 class="display-4">Fill in your Details</h1>
+</div>
+
+<!-- Form that posts the claim details -->
+<form asp-action="Claim" method="post">
+
+    <!-- Form group for entering LectureName -->
+    <div class="form-group">
+       
+        <label asp-for="LectureName"></label>
+       
+        <input asp-for="LectureName" class="form-control" required /> <br />
+    </div>
+
+    
+    <div class="form-group">
+ 
+        <label asp-for="LectureId"></label>
+      
+        <input asp-for="LectureId" class="form-control" required /> <br />
+    </div>
+
+    <div class="form-group">
+        
+        <label asp-for="Email"></label>
+        
+        <input asp-for="Email" class="form-control" required />
+    </div>
+
+    <br /><br />
+
+    <!-- Submit button for the form -->
+    <button type="submit" class="btn btn-primary">Fill in Claim Form</button> <br />
+</form>
+
+
+
+
+
+
+

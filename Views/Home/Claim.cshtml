@@ -1,0 +1,90 @@
+﻿@model ASSIGNMENT.Models.Claims
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-5">
+                <div class="card-header text-center">
+                    <h2>Claim Form</h2>
+                </div>
+                <div class="card-body">
+                    
+                        <!-- Table for entering claim details such as claim ID, program, module, hours, rate, etc. -->
+                        <table class="table table-bordered" id="claimsTable">
+                    <form action="Track" method="post">
+                        <div class="form-group">
+                            <label for="FromDate">From Date</label>
+                            <input type="date" id="FromDate" name="FromDate" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="ToDate">To Date</label>
+                            <input type="date" id="ToDate" name="ToDate" class="form-control" required />
+                        </div>
+
+                        <table class="table table-bordered" id="claimsTable">
+                            <thead>
+                                <tr>
+                                    <th>Claim ID</th>
+                                    <th>Program</th>
+                                    <th>Module Name</th>
+                                    <th>Module Code</th>
+                                    <th>Hours</th>
+                                    <th>Groups</th>
+                                    <th>Hourly Rate</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" name="ClaimID" class="form-control" required /></td>
+                                    <td><input type="text" name="Program" class="form-control" required /></td>
+                                    <td><input type="text" name="ModuleName" class="form-control" required /></td>
+                                    <td><input type="text" name="ModuleCode" class="form-control" required /></td>
+                                    <td><input type="number" name="Hours" class="form-control" onchange="calculateTotal(this)" required /></td>
+                                    <td><input type="text" name="Groups" class="form-control" required /></td>
+                                    <td><input type="number" name="HourlyRate" class="form-control" step="0.01" onchange="calculateTotal(this)" required /></td>
+                                    <td><input type="text" name="Total" class="form-control" readonly /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="form-group text-center">
+                            <button type="button" class="btn btn-success" onclick="addRow()">Add More</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Description">Description</label>
+                            <textarea id="Description" name="Description" class="form-control" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="SupportingDocument">Supporting Document</label>
+                            <input type="file" id="SupportingDocument" name="SupportingDocument" class="form-control-file" required />
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                    <!-- JavaScript functions to dynamically add rows and calculate the total amount -->
+                    <script>
+                        // Function to add a new row by cloning the first row
+                        function addRow() {
+                            const table = document.querySelector('#claimsTable tbody');
+                            const newRow = table.rows[0].cloneNode(true);
+                            newRow.querySelectorAll('input').forEach(input => input.value = '');
+                            table.appendChild(newRow);
+                        }
+                        // Function to calculate the total based on hours and hourly rate
+                        function calculateTotal(element) {
+                            const row = element.closest('tr');
+                            const inputs = row.querySelectorAll('input[type="number"]');
+                            const hours = parseFloat(inputs[0].value) || 0;
+                            const rate = parseFloat(inputs[1].value) || 0;
+                            row.querySelector('input[name="Total"]').value = (hours * rate).toFixed(2);
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

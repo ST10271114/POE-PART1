@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Approval";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Verification</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Claim Verification</h1>
+    <table border="1" cellpadding="10" cellspacing="0" align="center">
+        <thead>
+            <tr>
+                <th>Claim ID</th>
+                <th>Name</th>
+                <th>Hours</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="claim-table-body">
+            <tr>
+                <td>1</td>
+                <td>Snesipho Jane</td>
+                <td>4</td>
+                <td>Pending</td>
+                <td>
+                    <button type="button">Verify</button>
+                    <button type="button">Approve</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>George Smith</td>
+                <td>8</td>
+                <td>Pending</td>
+                <td>
+                    <button type="button">Verify</button>
+                    <button type="button">Approve</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Lucia Jacobs</td>
+                <td>6</td>
+                <td>Approved</td>
+                <td>
+                    <button type="button">Verify</button>
+                    <button type="button" disabled>Approve</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

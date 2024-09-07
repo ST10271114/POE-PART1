@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Track Your Claim Status";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Track Your Claim Status</h1>
+    <p class="lead">Your claim has been submitted successfully!</p>
+    <p>Use your Claim ID to track the status of your claim.</p>
+
+    <form asp-action="TrackClaim" method="post">
+        <div class="form-group">
+            <label for="claimId">Enter your Claim ID:</label>
+            <input type="text" name="claimId" id="claimId" class="form-control" placeholder="Claim ID" />
+        </div>
+        <button type="submit" class="btn btn-primary">Track Status</button>
+    </form>
+</div>
